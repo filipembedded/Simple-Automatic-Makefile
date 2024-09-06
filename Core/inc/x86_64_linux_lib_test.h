@@ -3,4 +3,6 @@
 
 void x86_64_lib_test();
 
+void x86_64_lib_test2();
+
 #endif

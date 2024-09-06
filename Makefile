@@ -15,6 +15,7 @@ LD = gcc
 # Paths
 SOURCES_PATH = Core/src
 INCLUDE_PATH = Core/inc
+LIBRARY_PATH = Core/lib
 TARGET_PATH = build
 
 # Sources 
@@ -23,6 +24,9 @@ SOURCES = $(wildcard $(SOURCES_PATH)/*.c)
 # Objects
 OBJECTS = $(patsubst $(SOURCES_PATH)/%.c, $(TARGET_PATH)/%.o, $(SOURCES))
 
+# Libraries
+LIBRARIES = $(wildcard $(LIBRARY_PATH)/*.a)
+
 # Target executable named 'program'
 TARGET = program
 
@@ -30,7 +34,7 @@ TARGET = program
 CFLAGS = -I$(INCLUDE_PATH) -Wall -g
 
 # Link object files into executable
-$(TARGET_PATH)/$(TARGET) : $(OBJECTS) # This line is improved
+$(TARGET_PATH)/$(TARGET) : $(OBJECTS) $(LIBRARIES) # This line is improved
 	@echo "Linking object files into target executable:"
 	$(LD) $^ -o $@
 
