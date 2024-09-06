@@ -8,12 +8,14 @@
 
 # Compiler
 CC = gcc
-# Compiler flags
-CFLAGS = -Wall -g
+
+# Linker
+LD = gcc
 
 # Paths
 SOURCES_PATH = Core/src
 INCLUDE_PATH = Core/inc
+LIBRARIES_PATH = Core/lib
 TARGET_PATH = build
 
 # Sources 
@@ -25,22 +27,33 @@ OBJECTS = $(patsubst $(SOURCES_PATH)/%.c, $(TARGET_PATH)/%.o, $(SOURCES))
 # Target executable named 'program'
 TARGET = program
 
+# Libraries
+LIBRARIES = -lx86_64_linux_lib_test
+
+# Compiler flags
+CFLAGS = -I$(INCLUDE_PATH) -Wall -g
+
+# Linker flags
+LDFLAGS = -L$(LIBRARIES_PATH) $(LIBRARIES)
+
 # Link object files into executable
 $(TARGET_PATH)/$(TARGET) : $(OBJECTS) # This line is improved
 	@echo "Linking object files into target executable:"
-	$(CC) $(CFLAGS) -o $@ $^
+	$(LD) $^ $(LDFLAGS) -o $@
 
 # Compile source files into object files
-$(TARGET_PATH)/%.o : $(SOURCES_PATH)/%.c
+$(TARGET_PATH)/%.o : $(SOURCES_PATH)/%.c build_dir
 	@echo "Compiling $< file:"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Create build directory
+build_dir:
 	mkdir -p $(TARGET_PATH)
-	$(CC) $(CFLAGS) -I$(INCLUDE_PATH) -c $< -o $@
 
 # Clean target
 .PHONY: clean
 clean:
-	rm -f $(TARGET) $(OBJECTS)
-	rm -r $(TARGET_PATH)
+	rm -rf $(TARGET_PATH)
 
 # Run executable target
 .PHONY: run
