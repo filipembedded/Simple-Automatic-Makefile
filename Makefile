@@ -1,6 +1,6 @@
 ########################### SIMPLE AUTOMATIC MAKEFILE ##########################
 # This is the Simple Automatic Makefile! Put your source files into Core/src and
-# your header files into the Core/inc directory. If you want to have sepparate 
+# your header files into the Core/inc directory. If you want to have separate 
 # directory for your sources and includes, you need to make your implementation
 # of this Makefile. This is a simple Makefile, made for simple projects :)
 # Author: filipembedded
