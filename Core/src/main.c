@@ -4,7 +4,6 @@
 #include "util.h"
 #include "common.h"
 #include "test.h"
-#include "x86_64_linux_lib_test.h"
 
 int main(int argc, char **argv)
 {
@@ -16,9 +15,6 @@ int main(int argc, char **argv)
 
     /* Execute function from test */
     test();
-
-    /* Execute function from lib */
-    x86_64_lib_test();
 
     return 0;
 }
