@@ -11,10 +11,10 @@ user's project for sources and headers.**
 ## **How to build project?**
 To build this project, user should be in project's root directory, and
 type:
-**make** - It builds project and creates project target executable (placed 
+- **make** - It builds project and creates project target executable (placed 
 in **build** directory)
-**make clean** - It cleans (deletes) build directory with it's contents 
+- **make clean** - It cleans (deletes) build directory with it's contents 
 (object files and target executable)
-**make run** - It runs the target executable previously built with **make** 
+- **make run** - It runs the target executable previously built with **make** 
 
 
